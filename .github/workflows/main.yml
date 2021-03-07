@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
      #     port: ${{ secrets.PORT }}
           source: "."
-          target: "/srv"
+          target: "/srv/unix_sect_bot_v3"
           rm: true
       #  run: go run main.go
       
