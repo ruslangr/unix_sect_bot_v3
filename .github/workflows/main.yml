@@ -38,7 +38,8 @@ jobs:
       - name: Install dependenses mapstructure
         run: go get github.com/mitchellh/mapstructure
       - name: Build app
-        run: go build main.go
+      #  run: go build main.go
+        run: go run main.go
       
       
 
