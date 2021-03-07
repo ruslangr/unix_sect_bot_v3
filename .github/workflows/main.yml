@@ -39,6 +39,16 @@ jobs:
         run: go get github.com/mitchellh/mapstructure
       - name: Build app
         run: go build main.go
+      - name: Copy to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+     #     port: ${{ secrets.PORT }}
+          source: "."
+          target: "/srv"
+          rm: true
       #  run: go run main.go
       
       
