@@ -3,3 +3,4 @@ listUsersBackup.json
 names.json
 parms.json
 __debug_bin*
+./config*

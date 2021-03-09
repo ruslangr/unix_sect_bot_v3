@@ -1,0 +1,10 @@
+little_yoda:
+#  image: 'golang:latest'
+#  restart: always
+#  command: 'mkdir /app'
+#  command: 'mkdir /app/mnt'
+
+#  working_dir:  /app
+  build: .
+  volumes:
+    - './config:/app/mnt'
