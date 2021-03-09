@@ -50,6 +50,17 @@ jobs:
           target: "/srv/unix_sect_bot_v3"
           rm: true
       #  run: go run main.go
+      - name: run docker-compose
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          script: |
+            cd /srv/unix_sect_bot_v3
+            docker stop $(docker ps -a -q  --filter ancestor=unix_sect_bot_v3_little_yoda)
+            docker-compose up -d --build
+
       
       
 
