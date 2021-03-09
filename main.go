@@ -42,8 +42,8 @@ type parmsFromJson struct {
 
 func main() {
 	parms = make(map[string]interface{})
-	//parms = readFromFileParms("/app/mnt/config/parms.json")
-	parms = readFromFileParms("./config/parms.json")
+	parms = readFromFileParms("/app/mnt/parms.json")
+	//parms = readFromFileParms("./config/parms.json")
 	chIDstr := parms["ChatID"].(string)
 	chID, err1 := strconv.ParseInt(chIDstr, 10, 64)
 	if err1 != nil {
@@ -51,11 +51,11 @@ func main() {
 	}
 
 	names = make(map[string]interface{}) // настоящие имена
-	//names = readFromFile("/app/mnt/config/names.json")
-	names = readFromFile("./config/names.json")
+	names = readFromFile("/app/mnt/names.json")
+	//names = readFromFile("./config/names.json")
 	listUsers = make(map[string]interface{}) // map для отчета
-	//listUsers = readFromFile("/app/mnt/config/listUsers.json")
-	listUsers = readFromFile("./config/listUsers.json")
+	listUsers = readFromFile("/app/mnt/listUsers.json")
+	//listUsers = readFromFile("./config/listUsers.json")
 
 	users = make(map[string]interface{}) // ники в telegram
 	for key1, val1 := range listUsers {
@@ -111,8 +111,8 @@ func main() {
 			case "send": // пошлет в чат chatID статус
 				go sendNotifications(bot, chID)
 			case "read":
-				//listUsers = readFromFile("/app/mnt/config/listUsers.json")
-				listUsers = readFromFile("./config/listUsers.json")
+				listUsers = readFromFile("/app/mnt/listUsers.json")
+				//listUsers = readFromFile("./config/listUsers.json")
 			case "write":
 				writeToFile(listUsers)
 			}
@@ -212,8 +212,8 @@ func writeToFile(m map[string]interface{}) {
 	if err2 != nil {
 		panic(err2)
 	}
-	//err3 := ioutil.WriteFile("/app/mnt/config/listUsers.json", jsn, 0644)
-	err3 := ioutil.WriteFile("./config/listUsers.json", jsn, 0644)
+	err3 := ioutil.WriteFile("/app/mnt/listUsers.json", jsn, 0644)
+	//err3 := ioutil.WriteFile("./config/listUsers.json", jsn, 0644)
 	if err3 != nil {
 		panic(err3)
 	}
