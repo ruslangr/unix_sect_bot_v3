@@ -13,6 +13,7 @@ import (
 	"github.com/fatih/structs"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/mitchellh/mapstructure"
+	//test comment
 )
 
 var (
